@@ -6,8 +6,19 @@ public class MusicPlayer : MonoBehaviour {
     public List<AudioClip> audioClips;
     public AudioSource audioSource;
     int last = -1;
+    public bool muted = false;
+
+    void ShutTheFuckUp() {
+        audioSource.volume = 0f;
+    }
 
     void Update() {
+        if (muted) {
+            ShutTheFuckUp();            
+        } else {
+            audioSource.volume = 1f;
+        }
+
         if (audioSource.isPlaying) {
             return;
         }
